@@ -1,2 +1,7 @@
 a.out
 Utilities
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CMakeFiles
+Image-Sequence-Parser
