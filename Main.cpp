@@ -83,6 +83,8 @@ int main(int argc, char* argv[]) {
         //get the paths in the directory
         util::file::getPathsInDir(*it, pathNameList);
 
+        unsigned i = 0;
+
         //for each path rename it
         PathNameList::const_iterator
             pIt = pathNameList.begin(),
@@ -94,29 +96,9 @@ int main(int argc, char* argv[]) {
 
                 //the current name of the image
                 std::string currentName = *pIt;
-                //the new name of the image
-                std::stringstream newName;
-
-                //the current index in the string
-                int index = 0;
-
-                //search through until we find 0
-                for (; currentName[index] != '0' &&
-                    index < currentName.length(); ++index);
-
-                //set the new name before the 0s
-                newName << currentName.substr(0, index);
-
-                //seacrch over the 0s
-                for (; currentName[index] == '0' &&
-                    index < currentName.length(); ++index);
-
-                newName  << currentName.substr(index, currentName.length());
-
-                std::cout << "->processing: " << *pIt << std::endl;
 
                 //rename the image
-                rename(currentName.c_str(), newName.str().c_str());
+                rename(currentName.c_str(), i);
             }
         }
     }
