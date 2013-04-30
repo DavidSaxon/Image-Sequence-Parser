@@ -73,6 +73,9 @@ int main(int argc, char* argv[]) {
     }
 
 
+    //create the output directory
+    util::file::createDirectory("output");
+
     //process each directory
     it = argumentList.begin();
     for (; it != ite; ++it) {
@@ -97,8 +100,14 @@ int main(int argc, char* argv[]) {
                 //the current name of the image
                 std::string currentName = *pIt;
 
+                //convert the counter to a string
+                std::stringstream newName;
+                newName << "output/" << i << ".png";
+
                 //rename the image
-                rename(currentName.c_str(), i);
+                rename(currentName.c_str(), newName.str().c_str());
+
+                ++i;
             }
         }
     }
